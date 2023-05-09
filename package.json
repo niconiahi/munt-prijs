@@ -39,17 +39,5 @@
   },
   "engines": {
     "node": ">=16.13"
-  },
-  "prettier": {
-    "bracketSpacing": true,
-    "bracketSameLine": false,
-    "jsxSingleQuote": false,
-    "printWidth": 80,
-    "arrowParens": "always",
-    "proseWrap": "always",
-    "semi": false,
-    "singleQuote": false,
-    "tabWidth": 2,
-    "trailingComma": "all"
   }
 }
