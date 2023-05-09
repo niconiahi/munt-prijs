@@ -10,10 +10,7 @@ export default {
   serverModuleFormat: "esm",
   serverPlatform: "neutral",
   tailwind: true,
-  // appDirectory: "app",
-  // assetsBuildDirectory: "public/build",
-  // serverBuildPath: "build/index.js",
-  // publicPath: "/build/",
+  postcss: true,
   future: {
     unstable_dev: true,
     v2_errorBoundary: true,
