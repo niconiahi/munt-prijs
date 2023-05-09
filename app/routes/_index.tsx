@@ -1,39 +1,32 @@
-import type { V2_MetaFunction } from "@remix-run/cloudflare";
+import type { V2_MetaFunction } from "@remix-run/cloudflare"
+import { json } from "@remix-run/cloudflare"
+import { useLoaderData } from "@remix-run/react"
 
 export const meta: V2_MetaFunction = () => {
-  return [{ title: "New Remix App" }];
-};
+  return [{ title: "New Remix App" }]
+}
+
+export async function loader() {
+  const price = await fetch("price", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "GET",
+  })
+
+  console.log("loader ~ price:", price)
+
+  return json({
+    name: "Munt prijs",
+  })
+}
 
 export default function Index() {
+  const { name } = useLoaderData<typeof loader>()
+
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-            className="text-2xl"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
-  );
+    <h1 className="text-2xl text-red-300 bottom-3">
+      The name of this app is: {name}
+    </h1>
+  )
 }
